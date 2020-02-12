@@ -2,6 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import imagen from './img/cryptocurrency.png'
 
+import Titulo from './components/Titulo';
+import Formulario from './components/Formulario';
+
 
 const Contenedor = styled.div`
   margin-top: 2rem;
@@ -20,33 +23,8 @@ const Contenedor = styled.div`
       overflow: hidden;
       opacity: .3;
     }
-  }
-`;
-const TituloH1 = styled.h1`
-  font-family: var(--font-1);
-  font-weight: 700;
-  font-size: 4rem;
-  text-align: right;
-  position: relative;
-
-  &::before{
-    content: '';
-    background-color: var(--turquoise-light-1);
-    position: absolute;
-    bottom: -1.7rem;
-    right: 0;
-    width: 20rem;
-    height: .4rem;
-  }
-
-  @media (max-width: 589px) {
-    text-align: center;
-    
-    &::before{
-      bottom: -1.7rem;
-      right: 27%;
-      width: 20rem;
-      height: .4rem;
+    .grid-2{
+      z-index: 0;
     }
   }
 `;
@@ -62,7 +40,11 @@ function App() {
         />
       </div>
       <div className="grid-2">
-        <TituloH1 className="font-1">Cryptocurrencies instantly</TituloH1>
+        <Titulo tittle='Cryptocurrencies instantly' />
+        <hr className="hr-w" />
+
+        <Formulario />
+
       </div>
     </Contenedor>
   );
