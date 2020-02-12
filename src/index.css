@@ -1,12 +1,16 @@
 body{
     background-color: var(--indigo-dark-2);
-    min-height: 100vh;
+    min-height: 90vh;
 }
 /* ---------------------------- */
 /* Modific */
 /* --------ˇˇˇˇˇˇˇˇˇˇˇˇ-------- */
 hr.hr-w{
     border-bottom: .1rem solid rgba(255, 255, 255, 0.2);
+}
+.i-spin-r{
+    /* animation: a-icon-spin-l 1s linear infinite!important; */
+    animation-duration: 1.5s;
 }
 /* ---------------------------- */
 /* Form Group */

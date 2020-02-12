@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 
 const TituloH1 = styled.h1`
@@ -26,7 +27,7 @@ const TituloH1 = styled.h1`
     
     &::before{
       bottom: -1.7rem;
-      right: 27%;
+      right: 21%;
       width: 20rem;
       height: .4rem;
     }
@@ -39,5 +40,11 @@ const Titulo = ( { tittle } ) => {
     <TituloH1 className="font-1"> {tittle} </TituloH1>
   );
 };
+
+
+Titulo.propTypes = {
+  tittle: PropTypes.string.isRequired,
+}
+
 
 export default Titulo

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import useMoneda from '../hooks/useMoneda';
 import useCripto from '../hooks/useCripto';
@@ -25,7 +26,7 @@ const BtnSubmitInput = styled.input`
 `;
 
 
-const Formulario = () => {
+const Formulario = ( { guardarMoneda, guardarCriptomoneda } ) => {
 
   // STATE
   const [listaCripto, guardarListaCripto] = useState([]);
@@ -36,18 +37,13 @@ const Formulario = () => {
     {codigo: 'MXN', nombre: 'Peso Mexicano'},
     {codigo: 'USD', nombre: 'Dolar Estados Unidos'},
     {codigo: 'EUR', nombre: 'Euro'},
-    {codigo: 'GBO', nombre: 'Libra Esterlina'}
+    {codigo: 'GBP', nombre: 'Libra Esterlina'}
   ]
   const labelCripto = 'Cryptocurrency:';
-  const CRIPTOMONEDAS = [
-    {codigo: 'MXN', nombre: 'Peso Mexicano'},
-    {codigo: 'USD', nombre: 'Dolar Estados Unidos'},
-    {codigo: 'EUR', nombre: 'Euro'},
-    {codigo: 'GBO', nombre: 'Libra Esterlina'}
-  ]
+
 
   // Utilizar useMoneda
-  const [moneda, SelectMoneda] = useMoneda(labelMonedas, '', MONEDAS);
+  const [monedas, SelectMoneda] = useMoneda(labelMonedas, '', MONEDAS);
   // Utilizar useCripto
   const [criptomonedas, SelectCripto] = useCripto(labelCripto, '', listaCripto);
 
@@ -69,13 +65,15 @@ const Formulario = () => {
     e.preventDefault();
     
     // Validar si el formulario esta vacío
-    if (moneda === '' || criptomonedas === '') {
+    if (monedas === '' || criptomonedas === '') {
       guardarError(true);
       return;
     }
 
     // Pasar el resultado al componente principal
     guardarError(false);
+    guardarMoneda(monedas)
+    guardarCriptomoneda(criptomonedas)
   };
 
   return (
@@ -100,5 +98,12 @@ const Formulario = () => {
     </form>
   );
 };
+
+
+Formulario.propTypes = {
+  guardarMoneda: PropTypes.func.isRequired,
+  guardarCriptomoneda: PropTypes.func.isRequired,
+}
+
 
 export default Formulario
